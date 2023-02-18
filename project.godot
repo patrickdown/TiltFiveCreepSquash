@@ -28,6 +28,10 @@ tutorial in the official documentation."
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+TiltFiveManager="*res://addons/tilt-five/tilt_five_manager.gdns"
+
 [display]
 
 window/size/width=720
@@ -37,6 +41,10 @@ window/size/height=540
 
 version_control_autoload_on_startup=true
 version_control_plugin_name="GitAPI"
+
+[gdnative]
+
+singletons=[ "res://addons/tilt-five/TiltFiveGodot.tres" ]
 
 [input]
 
