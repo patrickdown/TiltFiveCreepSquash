@@ -66,8 +66,13 @@ tracks/1/keys = {
 }
 
 [node name="Player" type="KinematicBody"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
 collision_mask = 6
 script = ExtResource( 2 )
+speed = 1.4
+fall_acceleration = 7.5
+jump_impulse = 2.0
+bounce_impulse = 1.6
 
 [node name="Pivot" type="Spatial" parent="."]
 
@@ -84,7 +89,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="MobDetector"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689763, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508563, 0 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

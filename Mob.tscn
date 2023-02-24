@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Mob.gd" type="Script" id=1]
 [ext_resource path="res://art/mob.glb" type="PackedScene" id=2]
@@ -7,6 +7,33 @@
 extents = Vector3( 0.821164, 0.3843, 1.05794 )
 
 [sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Character:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.150439, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pivot/Character:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
 resource_name = "float"
 length = 1.2
 loop = true
@@ -36,14 +63,17 @@ tracks/1/keys = {
 }
 
 [node name="Mob" type="KinematicBody" groups=["mob"]]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -4.76837e-07, -0.00787747 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 1 )
+min_speed = 1.0
+max_speed = 1.8
 
 [node name="Pivot" type="Spatial" parent="."]
 
 [node name="Character" parent="Pivot" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0.15, 0.35, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.150439, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.429729, -0.146082 )
@@ -54,6 +84,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.308012, 0.268692 )
 aabb = AABB( -1.29301, -0.728834, -1.80968, 2.58602, 1.45767, 3.61935 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/float = SubResource( 2 )
+autoplay = "float"
+anims/RESET = SubResource( 2 )
+anims/float = SubResource( 3 )
 
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

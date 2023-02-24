@@ -5,14 +5,14 @@ extends KinematicBody
 signal hit
 
 # How fast the player moves in meters per second.
-export var speed = 14
+export(float) var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
-export var fall_acceleration = 75
+export(float) var fall_acceleration = 75
 # Vertical impulse applied to the character upon jumping in meters per second.
-export var jump_impulse = 20
+export(float) var jump_impulse = 20
 # Vertical impulse applied to the character upon bouncing over a mob in
 # meters per second.
-export var bounce_impulse = 16
+export(float) var bounce_impulse = 16
 
 var velocity = Vector3.ZERO
 
